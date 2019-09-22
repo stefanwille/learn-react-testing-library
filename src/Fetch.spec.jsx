@@ -28,9 +28,5 @@ it("loads and displays todos", async () => {
 
   const todoList = container.getByTestId("todo-list");
   expect(todoList).not.toBeEmpty();
-  console.log(prettyDOM(todoList));
-
-  // for (let i = 0; i < todoList.children.length; i++) {
-  //   console.log(todoList.children[i].tagName);
-  // }
+  // console.log(prettyDOM(todoList));
 });
