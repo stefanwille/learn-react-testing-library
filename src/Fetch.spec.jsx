@@ -20,14 +20,13 @@ it("loads and displays todos", async () => {
   });
   jest.spyOn(global, "fetch").mockImplementation(() => mockFetchPromise); // 4
 
-  const { getByTestId, debug } = render(<Fetch maxTodos={3} />);
+  const container = render(<Fetch maxTodos={3} />);
   // getByTestId("greeting-text");
   // console.log(getByText("Hello Fetch World"));
-  //debug();
 
-  await wait(() => expect(getByTestId("todo-2")).toBeTruthy());
+  await wait(() => expect(container.getByTestId("todo-2")).toBeTruthy());
 
-  const todoList = getByTestId("todo-list");
+  const todoList = container.getByTestId("todo-list");
   expect(todoList).not.toBeEmpty();
   console.log(prettyDOM(todoList));
 

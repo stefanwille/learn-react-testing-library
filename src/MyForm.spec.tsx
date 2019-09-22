@@ -19,11 +19,8 @@ describe("MyForm", () => {
 
   it("handles submit", async () => {
     const container = render(<MyForm />);
-
     const firstName = container.getByLabelText("First name:");
-
     const lastName = container.getByLabelText("Last name:");
-
     const submit = container.getByDisplayValue("Submit");
 
     fireEvent.change(lastName, { target: { value: "Slobodan" } });
