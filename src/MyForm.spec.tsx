@@ -26,11 +26,12 @@ describe("MyForm", () => {
     fireEvent.change(lastName, { target: { value: "Slobodan" } });
     fireEvent.change(firstName, { target: { value: "Stefan" } });
     fireEvent.click(submit);
-    await wait(() =>
+    await wait(() => {
       expect(container.getByTestId("form-result").textContent).toBe(
         "Your name is Stefan Slobodan"
-      )
-    );
+      );
+      expect(container.getByTestId("form-result")).toMatchSnapshot();
+    });
 
     // await waitForElement(() => container.getByTestId("form-result"));
     // expect(container.getByTestId("form-result").textContent).toBe(

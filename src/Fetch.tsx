@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import axios from "axios";
 
 const loadTodos = async (): Promise<any> => {
-  const response = await axios.get(
-    "https://jsonplaceholder.typicode.com/todos"
-  );
-  return response.data;
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+  return response.json();
 };
 
 export const Fetch = ({ maxTodos }: { maxTodos: number }) => {

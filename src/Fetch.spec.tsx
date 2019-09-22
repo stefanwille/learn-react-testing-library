@@ -9,22 +9,16 @@ import "@testing-library/jest-dom/extend-expect";
 afterEach(cleanup);
 
 it("loads and displays todos", async () => {
-  // axiosMock.get.mockResolvedValueOnce({
-  //   data: { id: 12, text: "hello there", completed: false }
-  // });
-  const mockSuccessResponse = {};
-  const mockJsonPromise = Promise.resolve(mockSuccessResponse); // 2
-  const mockFetchPromise = Promise.resolve({
-    // 3
-    json: () => mockJsonPromise
-  });
-  jest.spyOn(global, "fetch").mockImplementation(() => mockFetchPromise); // 4
+  const fetchMock = fetch as any;
+  fetchMock.mockResponseOnce(
+    JSON.stringify([{ id: 12, text: "hello there", completed: false }])
+  );
 
   const container = render(<Fetch maxTodos={3} />);
   // getByTestId("greeting-text");
   // console.log(getByText("Hello Fetch World"));
 
-  await wait(() => expect(container.getByTestId("todo-2")).toBeTruthy());
+  await wait(() => expect(container.getByTestId("todo-12")).toBeTruthy());
 
   const todoList = container.getByTestId("todo-list");
   expect(todoList).not.toBeEmpty();
