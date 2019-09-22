@@ -21,7 +21,9 @@ export const MyForm = () => {
           return (
             <Form autoComplete="off">
               <p>Hello</p>
+              <label htmlFor="firstName">First name:</label>
               <input
+                id="firstName"
                 autoComplete="off"
                 type="text"
                 name="firstName"
@@ -29,7 +31,9 @@ export const MyForm = () => {
                 onChange={formikApi.handleChange}
               />
               <br />
+              <label htmlFor="lastName">Last name:</label>
               <input
+                id="lastName"
                 autoComplete="off"
                 type="text"
                 name="lastName"
@@ -41,7 +45,9 @@ export const MyForm = () => {
           );
         }}
       ></Formik>
-      {fullName.length > 0 && <div>Your name is {fullName}</div>}
+      {fullName.length > 0 && (
+        <div data-testid="form-result">Your name is {fullName}</div>
+      )}
     </div>
   );
 };
